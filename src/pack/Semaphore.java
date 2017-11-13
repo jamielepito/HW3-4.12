@@ -1,6 +1,6 @@
 package pack;
 
-public class Semaphore {
+public class Semaphore extends Thread{
 	int size;
 
 	//semaphore
@@ -9,6 +9,7 @@ public class Semaphore {
 	}
 	
 	public int release(){
+		notifyAll();
 		return size++;
 	}
 	//wait anf notify for aquire aand release
@@ -16,6 +17,7 @@ public class Semaphore {
 		while (size == 0){
 			wait();
 		}
+		notifyAll();
 		return size--;
 	}
 }
