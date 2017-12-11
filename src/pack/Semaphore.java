@@ -9,15 +9,15 @@ public class Semaphore extends Thread{
 	}
 	
 	public int release(){
-		notifyAll();
+		//notifyAll(); - problem implementing this rn
 		return size++;
 	}
-	//wait anf notify for aquire aand release
+	//wait and notify for acquire and release
 	public int acquire() throws InterruptedException{
 		while (size == 0){
 			wait();
 		}
-		notifyAll();
+		//notifyAll(); - ^generates an error
 		return size--;
 	}
 }
